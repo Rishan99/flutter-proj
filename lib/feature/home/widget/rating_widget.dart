@@ -18,7 +18,7 @@ class RatingBoxWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.sp),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-      child: RatingWidget(rating: rating),
+      child: RatingLabelWidget(rating: rating),
     );
   }
 }

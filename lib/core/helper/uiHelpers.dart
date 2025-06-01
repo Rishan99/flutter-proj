@@ -17,8 +17,8 @@ Future<dynamic> showBottomSheetCustom(BuildContext context, Widget widget, {Stri
     isDismissible: isDismiss ?? true,
     enableDrag: dragEnable ?? true,
     builder: (context) => Container(
-      decoration: const BoxDecoration(
-        color: Colors.white,
+      decoration: BoxDecoration(
+        color: Theme.of(context).scaffoldBackgroundColor,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(16.0),
           topRight: Radius.circular(16.0),
@@ -32,11 +32,12 @@ Future<dynamic> showBottomSheetCustom(BuildContext context, Widget widget, {Stri
               child: (title != null)
                   ? Text(
                       title,
-                      style: Theme.of(context).textTheme.displaySmall?.copyWith(fontWeight: FontWeight.w600, fontSize: 20.sp),
+                      style: Theme.of(context).textTheme.displaySmall?.copyWith(fontWeight: FontWeight.w600, fontSize: 20.sp, color: Colors.white),
                     )
                   : const SizedBox.shrink(),
             ),
             CloseButton(
+              color: Theme.of(context).appBarTheme.iconTheme?.color,
               onPressed: () {
                 Navigator.of(context).pop();
               },

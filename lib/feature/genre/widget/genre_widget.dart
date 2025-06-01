@@ -19,7 +19,7 @@ class GenreWidget extends StatelessWidget {
     return CustomInkWell(
       onTap: () {
         Navigator.of(context).pushNamed(
-          Routes.movieList,
+          Routes.genreMovieList,
           arguments: {
             'genreId': data.id,
           },

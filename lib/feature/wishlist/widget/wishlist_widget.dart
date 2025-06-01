@@ -70,7 +70,7 @@ class WishlistWidget extends StatelessWidget {
                           ),
                         ),
                         adaptableWidth(width: 8),
-                        RatingWidget(rating: data.averageRating),
+                        RatingLabelWidget(rating: data.averageRating),
                         Expanded(child: SizedBox.shrink()),
                         WishlistIcon(
                           movieId: data.id,

@@ -327,27 +327,27 @@ final List<MovieModel> movieData = [
 ];
 final List<GenreModel> genreList = [
   GenreModel(
-    id: 1,
+    id: 101,
     name: 'Action',
     image: 'https://images.unsplash.com/photo-1601933471669-1a4e02f7f84d?w=800',
   ),
   GenreModel(
-    id: 2,
+    id: 102,
     name: 'Comedy',
     image: 'https://images.unsplash.com/photo-1598899134739-87abdc6eb8b0?w=800',
   ),
   GenreModel(
-    id: 3,
+    id: 103,
     name: 'Drama',
     image: 'https://images.unsplash.com/photo-1517602302552-471fe67acf66?w=800',
   ),
   GenreModel(
-    id: 4,
+    id: 104,
     name: 'Horror',
     image: 'https://images.unsplash.com/photo-1601758125946-9b2b3a6c0fa0?w=800',
   ),
   GenreModel(
-    id: 5,
+    id: 105,
     name: 'Sci-Fi',
     image: 'https://images.unsplash.com/photo-1549921296-3a20f61a6b74?w=800',
   ),

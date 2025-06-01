@@ -10,6 +10,7 @@ import 'package:moviehub/core/utility/utilities.dart';
 import 'package:moviehub/dependency_inject.dart';
 import 'package:moviehub/feature/movie_detail/widget/about_movie_widget.dart';
 import 'package:moviehub/feature/movie_detail/widget/label_widget.dart';
+import 'package:moviehub/feature/movie_detail/widget/rate_movie_widget.dart';
 import 'package:moviehub/feature/movie_detail/widget/reviews_list_widget.dart';
 import 'package:moviehub/feature/wishlist/widget/wishlist_widget.dart';
 import 'package:moviehub/services/movie/movie_service.dart';
@@ -40,9 +41,19 @@ class _MovieDetailViewState extends State<MovieDetailView> with TickerProviderSt
     tabController = TabController(length: 2, vsync: this);
   }
 
+  showRatingDialog(BuildContext context) {
+    showBottomSheetCustom(context, RateMovieWidget(movieId: widget.id), title: "Rate this movie");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showRatingDialog(context);
+        },
+        child: Icon(Icons.add),
+      ),
       body: FutureBuilder<MovieModel>(
           future: locator<MovieService>().getDetailById(widget.id),
           builder: (context, snapshot) {

@@ -2,6 +2,7 @@ import 'package:moviehub/core/routes/routes.dart';
 import 'package:moviehub/feature/auth/view/login_view.dart';
 import 'package:moviehub/feature/auth/view/signup_view.dart';
 import 'package:moviehub/feature/genre/view/genre_list_view.dart';
+import 'package:moviehub/feature/genre/view/genre_movie_list_view.dart';
 import 'package:moviehub/feature/home/view/dashboad_view.dart';
 import 'package:moviehub/feature/home/view/genre_view.dart';
 import 'package:moviehub/feature/home/view/home_view.dart';
@@ -17,6 +18,10 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return buildRoute(SignupView());
     case Routes.homePage:
       return buildRoute(DashboadView());
+    case Routes.genreMovieList:
+      return buildRoute(GenreMovieListView(
+        genreId: ((settings.arguments ?? {}) as Map<String, dynamic>?)?['genreId'],
+      ));
     case Routes.genreList:
       return buildRoute(GenreListView());
     case Routes.movieDetail:

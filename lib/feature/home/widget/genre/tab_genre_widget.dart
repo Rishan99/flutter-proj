@@ -18,7 +18,7 @@ class TabGenreWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomInkWell(
       onTap: () {
-        Navigator.of(context).pushNamed(Routes.movieList, arguments: {
+        Navigator.of(context).pushNamed(Routes.genreMovieList, arguments: {
           'genreId': data.id < 0 ? null : data.id,
         });
       },

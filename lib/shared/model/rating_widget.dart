@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:moviehub/core/theme/app_colors.dart';
 
-class RatingWidget extends StatelessWidget {
+class RatingLabelWidget extends StatelessWidget {
   final double rating;
-  const RatingWidget({
+  const RatingLabelWidget({
     super.key,
     required this.rating,
   });
