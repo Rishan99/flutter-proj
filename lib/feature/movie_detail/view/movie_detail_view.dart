@@ -6,18 +6,18 @@ import 'package:moviehub/core/constant/app_defaults.dart';
 import 'package:moviehub/core/helper/uiHelpers.dart';
 import 'package:moviehub/core/theme/app_colors.dart';
 import 'package:moviehub/core/utility/utilities.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:moviehub/feature/movie_detail/bloc/movie_detail_bloc.dart';
+import 'package:moviehub/shared/model/movie_model.dart';
+import 'package:moviehub/core/bloc/view/bloc_builder_view.dart';
 
 import 'package:moviehub/dependency_inject.dart';
 import 'package:moviehub/feature/movie_detail/widget/about_movie_widget.dart';
 import 'package:moviehub/feature/movie_detail/widget/label_widget.dart';
 import 'package:moviehub/feature/movie_detail/widget/rate_movie_widget.dart';
 import 'package:moviehub/feature/movie_detail/widget/reviews_list_widget.dart';
-import 'package:moviehub/feature/wishlist/widget/wishlist_widget.dart';
-import 'package:moviehub/services/movie/movie_service.dart';
-import 'package:moviehub/shared/model/movie_model.dart';
 import 'package:moviehub/widgets/form_seperator_box.dart';
 import 'package:moviehub/widgets/image_widget.dart';
-import 'package:moviehub/widgets/load_page_widget.dart';
 import 'package:moviehub/widgets/wishlist_icon.dart';
 
 class MovieDetailView extends StatefulWidget {
@@ -36,7 +36,6 @@ class _MovieDetailViewState extends State<MovieDetailView> with TickerProviderSt
   double get backgroundIamgeHeight => 450.h;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     tabController = TabController(length: 2, vsync: this);
   }
@@ -47,46 +46,44 @@ class _MovieDetailViewState extends State<MovieDetailView> with TickerProviderSt
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showRatingDialog(context);
-        },
-        child: Icon(Icons.add),
-      ),
-      body: FutureBuilder<MovieModel>(
-          future: locator<MovieService>().getDetailById(widget.id),
-          builder: (context, snapshot) {
-            return LoadPageWidget<MovieModel>(
-              futureFunction: locator<MovieService>().getDetailById(widget.id),
-              builder: (context, data) => Column(
+    return BlocProvider(
+      create: (_) => locator<MovieDetailBloc>(param1: widget.id),
+      child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            showRatingDialog(context);
+          },
+          child: Icon(Icons.add),
+        ),
+        body: BlocBuilderView<MovieDetailBloc, MovieDetailState, MovieDetailLoaded>(
+          child: (context, state) => Column(
+            children: [
+              Stack(
+                fit: StackFit.loose,
                 children: [
-                  Stack(
-                    fit: StackFit.loose,
-                    children: [
-                      backgroundWidget(data),
-                      Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Theme.of(context).scaffoldBackgroundColor.withOpacity(0.7),
-                              Theme.of(context).scaffoldBackgroundColor,
-                            ],
-                          ),
-                        ),
-                        height: backgroundIamgeHeight,
-                        width: double.maxFinite,
-                        child: headerWidget(data),
-                      )
-                    ],
-                  ),
-                  Expanded(child: bodyView(data))
+                  backgroundWidget(state.movie),
+                  Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Theme.of(context).scaffoldBackgroundColor.withOpacity(0.7),
+                          Theme.of(context).scaffoldBackgroundColor,
+                        ],
+                      ),
+                    ),
+                    height: backgroundIamgeHeight,
+                    width: double.maxFinite,
+                    child: headerWidget(state.movie),
+                  )
                 ],
               ),
-            );
-          }),
+              Expanded(child: bodyView(state.movie))
+            ],
+          ),
+        ),
+      ),
     );
   }
 

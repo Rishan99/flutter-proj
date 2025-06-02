@@ -8,7 +8,7 @@ part 'genre_movie_list_state.dart';
 
 class GenreMovieListBloc extends Bloc<GenreMovieListEvent, GenreMovieListState> {
   final MovieService movieService;
-  final int? genreId;
+  final int genreId;
 
   GenreMovieListBloc(this.movieService, this.genreId) : super(GenreMovieListInitial()) {
     on<FetchGenreMovies>(fetchGenreMovies);

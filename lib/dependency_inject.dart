@@ -5,6 +5,13 @@ import 'package:get_it/get_it.dart';
 import 'package:moviehub/services/general/general_service.dart';
 import 'package:moviehub/services/movie/movie_service.dart';
 import 'package:moviehub/services/user/user_service.dart';
+import 'package:moviehub/feature/genre/bloc/genre_list/genre_list_bloc.dart';
+import 'package:moviehub/feature/genre/bloc/genre_movie_list/genre_movie_list_bloc.dart';
+import 'package:moviehub/feature/movie_detail/bloc/movie_detail_bloc.dart';
+import 'package:moviehub/feature/search/bloc/search_bloc.dart';
+import 'package:moviehub/feature/wishlist/bloc/wishlist_bloc.dart';
+import 'package:moviehub/feature/auth/bloc/signup/signup_bloc.dart';
+import 'package:moviehub/feature/auth/bloc/login/login_bloc.dart';
 
 final locator = GetIt.instance;
 
@@ -25,24 +32,39 @@ setupDependencies() async {
   locator.registerSingleton<UserService>(UserService(httpService));
   locator.registerSingleton<GeneralService>(GeneralService(httpService));
   locator.registerSingleton<MovieService>(MovieService(httpService));
-  // locator.registerSingleton<LocalNotificationService>(LocalNotificationService(locator<NotificationHandler>()));
-  // locator.registerSingleton<FirebaseNotificationService>(FirebaseNotificationService(locator<NotificationHandler>()));
-  // locator.registerSingleton<AuthService>(AuthService(httpService));
-  // locator.registerSingleton<FirebaseAuthService>(FirebaseAuthService(preferenceService));
-  // locator.registerSingleton<BusinessService>(BusinessService(httpService));
-  // locator.registerSingleton<CouponService>(CouponService(httpService));
-  // locator.registerSingleton<DealService>(DealService(httpService));
-  // locator.registerSingleton<EventService>(EventService(httpService));
-  // locator.registerSingleton<GeneralService>(GeneralService(httpService));
-  // locator.registerSingleton<JobService>(JobService(httpService));
-  // locator.registerSingleton<MenuService>(MenuService(httpService));
-  // locator.registerSingleton<NewArrivalService>(NewArrivalService(httpService));
-  // locator.registerSingleton<NotificationService>(NotificationService(httpService));
-  // locator.registerSingleton<PointService>(PointService(httpService));
-  // locator.registerSingleton<UserService>(UserService(httpService));
-  // locator.registerSingleton<RateService>(RateService(httpService));
-  // locator.registerSingleton<GalleryService>(GalleryService(httpService));
-  // locator.registerSingleton<StampService>(StampService(httpService));
-  // locator.registerSingleton<ChatService>(ChatService(httpService));
-  // locator.registerSingleton<CardService>(CardService(httpService));
+
+  // Register GenreListBloc with injected GeneralService
+  locator.registerFactory<GenreListBloc>(
+    () => GenreListBloc(locator<GeneralService>()),
+  );
+
+  // Register GenreMovieListBloc with injected MovieService and param1 for genreId
+  locator.registerFactoryParam<GenreMovieListBloc, int, void>(
+    (genreId, _) => GenreMovieListBloc(locator<MovieService>(), genreId),
+  );
+
+  // Register MovieDetailBloc with injected MovieService and param1 for movieId
+  locator.registerFactoryParam<MovieDetailBloc, int, void>(
+    (movieId, _) => MovieDetailBloc(locator<MovieService>(), movieId),
+  );
+
+  // Register SearchBloc with injected MovieService
+  locator.registerFactory<SearchBloc>(
+    () => SearchBloc(locator<MovieService>()),
+  );
+
+  // Register WishlistBloc with injected UserService
+  locator.registerFactory<WishlistBloc>(
+    () => WishlistBloc(locator<UserService>()),
+  );
+
+  // Register SignupBloc with injected AuthService
+  locator.registerFactory<SignupBloc>(
+    () => SignupBloc(locator<AuthService>()),
+  );
+
+  // Register LoginBloc with injected AuthService
+  locator.registerFactory<LoginBloc>(
+    () => LoginBloc(locator<AuthService>()),
+  );
 }

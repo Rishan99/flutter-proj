@@ -5,7 +5,6 @@ import 'package:moviehub/core/bloc/view/bloc_builder_view.dart';
 import 'package:moviehub/core/constant/app_defaults.dart';
 import 'package:moviehub/dependency_inject.dart';
 import 'package:moviehub/feature/genre/widget/genre_widget.dart';
-import 'package:moviehub/services/general/general_service.dart';
 import 'package:moviehub/feature/genre/bloc/genre_list/genre_list_bloc.dart';
 import 'package:moviehub/widgets/center_hint_text.dart';
 
@@ -25,8 +24,8 @@ class _GenreListViewState extends State<GenreListView> {
       ),
       body: Padding(
         padding: AppDefaults.kPageSidePadding,
-        child: BlocProvider(
-          create: (_) => GenreListBloc(locator<GeneralService>()),
+        child: BlocProvider.value(
+          value: locator<GenreListBloc>(),
           child: BlocBuilderView<GenreListBloc, GenreListState, GenreListLoaded>(
             child: (context, state) {
               if (state.genres.isEmpty) {
