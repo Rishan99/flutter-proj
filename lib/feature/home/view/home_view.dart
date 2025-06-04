@@ -6,8 +6,8 @@ import 'package:moviehub/feature/home/view/featured_view.dart';
 import 'package:moviehub/feature/home/view/genre_view.dart';
 import 'package:moviehub/feature/home/view/pouplar_view.dart';
 import 'package:moviehub/feature/home/view/recently_added_view.dart';
-import 'package:moviehub/widgets/circular_image_widget.dart';
-import 'package:moviehub/widgets/form_seperator_box.dart';
+import 'package:moviehub/shared/widgets/circular_image_widget.dart';
+import 'package:moviehub/shared/widgets/form_seperator_box.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});

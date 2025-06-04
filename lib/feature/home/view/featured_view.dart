@@ -5,8 +5,8 @@ import 'package:moviehub/feature/home/widget/featured/featured_shimmer.dart';
 import 'package:moviehub/feature/home/widget/featured/featured_widget.dart';
 import 'package:moviehub/services/movie/movie_service.dart';
 import 'package:moviehub/shared/model/movie_model.dart';
-import 'package:moviehub/widgets/load_page_widget.dart';
-import 'package:moviehub/widgets/view_slider.dart';
+import 'package:moviehub/shared/widgets/load_page_widget.dart';
+import 'package:moviehub/shared/widgets/view_slider.dart';
 
 class FeaturedView extends StatelessWidget {
   const FeaturedView({super.key});

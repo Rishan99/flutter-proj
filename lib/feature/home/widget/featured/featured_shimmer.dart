@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:moviehub/core/constant/app_defaults.dart';
-import 'package:moviehub/widgets/shrimmer.dart';
+import 'package:moviehub/shared/widgets/shrimmer.dart';
 
 class FeaturedViewShimmer extends StatelessWidget {
   const FeaturedViewShimmer({super.key});

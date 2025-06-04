@@ -6,7 +6,7 @@ import 'package:moviehub/core/constant/app_defaults.dart';
 import 'package:moviehub/dependency_inject.dart';
 import 'package:moviehub/feature/genre/widget/genre_widget.dart';
 import 'package:moviehub/feature/genre/bloc/genre_list/genre_list_bloc.dart';
-import 'package:moviehub/widgets/center_hint_text.dart';
+import 'package:moviehub/shared/widgets/center_hint_text.dart';
 
 class GenreListView extends StatefulWidget {
   const GenreListView({super.key});

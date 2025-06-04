@@ -8,9 +8,9 @@ import 'package:moviehub/core/helper/uiHelpers.dart';
 import 'package:moviehub/dependency_inject.dart';
 import 'package:moviehub/feature/search/bloc/search_bloc.dart';
 import 'package:moviehub/feature/search/widget/search_movie_widget.dart';
-import 'package:moviehub/widgets/center_hint_text.dart';
-import 'package:moviehub/widgets/custom_ink_well.dart';
-import 'package:moviehub/widgets/form_seperator_box.dart';
+import 'package:moviehub/shared/widgets/center_hint_text.dart';
+import 'package:moviehub/shared/widgets/custom_ink_well.dart';
+import 'package:moviehub/shared/widgets/form_seperator_box.dart';
 
 class SearchView extends StatefulWidget {
   const SearchView({super.key});

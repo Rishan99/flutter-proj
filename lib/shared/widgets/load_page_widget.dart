@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:moviehub/widgets/center_hint_text.dart';
-import 'package:moviehub/widgets/loading_widget.dart';
+import 'package:moviehub/shared/widgets/center_hint_text.dart';
+import 'package:moviehub/shared/widgets/loading_widget.dart';
 
 class LoadPageWidget<T> extends StatelessWidget {
   final Future<T> futureFunction;

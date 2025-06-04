@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:moviehub/feature/movie_detail/widget/cast_widet.dart';
 
 import 'package:moviehub/shared/model/movie_model.dart';
-import 'package:moviehub/widgets/form_seperator_box.dart';
+import 'package:moviehub/shared/widgets/form_seperator_box.dart';
 
 class AboutMovieWidget extends StatelessWidget {
   final MovieModel movie;

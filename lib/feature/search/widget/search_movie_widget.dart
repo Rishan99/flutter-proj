@@ -6,8 +6,8 @@ import 'package:moviehub/core/helper/uiHelpers.dart';
 import 'package:moviehub/feature/movie_detail/widget/label_widget.dart';
 
 import 'package:moviehub/shared/model/movie_model.dart';
-import 'package:moviehub/widgets/form_seperator_box.dart';
-import 'package:moviehub/widgets/image_widget.dart';
+import 'package:moviehub/shared/widgets/form_seperator_box.dart';
+import 'package:moviehub/shared/widgets/image_widget.dart';
 
 class SearchMovieWidget extends StatelessWidget {
   final MovieModel movie;

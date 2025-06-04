@@ -4,8 +4,8 @@ import 'package:intl/intl.dart';
 import 'package:moviehub/core/constant/app_defaults.dart';
 import 'package:moviehub/core/routes/routes.dart';
 import 'package:moviehub/shared/model/movie_model.dart';
-import 'package:moviehub/widgets/custom_ink_well.dart';
-import 'package:moviehub/widgets/image_widget.dart';
+import 'package:moviehub/shared/widgets/custom_ink_well.dart';
+import 'package:moviehub/shared/widgets/image_widget.dart';
 
 class FeaturedWidget extends StatelessWidget {
   final MovieModel data;

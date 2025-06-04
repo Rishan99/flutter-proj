@@ -7,8 +7,7 @@ class LoginInitial extends LoginState {}
 class LoginLoading extends LoginState {}
 
 class LoginSuccess extends LoginState {
-  final String accessToken;
-  LoginSuccess(this.accessToken);
+  LoginSuccess();
 }
 
 class LoginError extends LoginState {

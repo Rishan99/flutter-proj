@@ -1,3 +1,4 @@
+import 'package:moviehub/core/constant/api_url.dart';
 import 'package:moviehub/demodata.dart';
 import 'package:moviehub/feature/auth/model/login_model.dart';
 import 'package:moviehub/feature/auth/model/signup_model.dart';
@@ -9,20 +10,15 @@ class AuthService {
   AuthService(this._httpService);
 
   Future<dynamic> login(LoginModel model) async {
-    await demoDelay();
-    return {"access_token": "dsd"};
+    var response = await _httpService.postDataJson(
+      ApiUrl.login,
+      data: model.toMap(),
+    );
+    return response;
   }
 
   Future<dynamic> register(SignupModel model) async {
-    await demoDelay();
-    return "done";
-    // var dataToSend = user.toMap();
-    // if (user.image != null) {
-    //   dataToSend.addAll({
-    //     'image': await MultipartFile.fromFile(user.image!),
-    //   });
-    // }
-    // var data = await _httpService.postDataFormData(ApiUrl.register, data: dataToSend);
-    // return data['message'];
+    var data = await _httpService.postDataJson(ApiUrl.register, data: model.toMap());
+    return data['message'];
   }
 }

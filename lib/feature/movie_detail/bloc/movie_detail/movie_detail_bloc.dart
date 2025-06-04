@@ -10,7 +10,6 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
   final int movieId;
   MovieDetailBloc(this.movieService, this.movieId) : super(MovieDetailInitial()) {
     on<FetchMovieDetail>(_onFetchMovieDetail);
-    on<RateMovie>(_onRateMovie);
     add(FetchMovieDetail());
   }
 
@@ -21,19 +20,6 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
       emit(MovieDetailLoaded(movie));
     } catch (e) {
       emit(MovieDetailError(e.toString()));
-    }
-  }
-
-  Future<void> _onRateMovie(RateMovie event, Emitter<MovieDetailState> emit) async {
-    emit(MovieDetailLoading());
-    try {
-      await movieService.rate(movieId, event.rating, event.description);
-      emit(RatingAddedSuccess());
-      await movieService.getDetailById(movieId).then((movie) {
-        emit(MovieDetailLoaded(movie));
-      });
-    } catch (e) {
-      emit(RatingAddedError(e.toString()));
     }
   }
 }

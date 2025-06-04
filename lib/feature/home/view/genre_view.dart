@@ -10,9 +10,9 @@ import 'package:moviehub/feature/home/widget/genre/genre_tab_shimmer.dart';
 import 'package:moviehub/feature/home/widget/genre/genre_tabs_shimmer_row.dart';
 import 'package:moviehub/feature/home/widget/genre/tab_genre_widget.dart';
 import 'package:moviehub/services/general/general_service.dart';
-import 'package:moviehub/widgets/custom_ink_well.dart';
-import 'package:moviehub/widgets/form_seperator_box.dart';
-import 'package:moviehub/widgets/load_page_widget.dart';
+import 'package:moviehub/shared/widgets/custom_ink_well.dart';
+import 'package:moviehub/shared/widgets/form_seperator_box.dart';
+import 'package:moviehub/shared/widgets/load_page_widget.dart';
 
 class GenreView extends StatelessWidget {
   const GenreView({super.key});

@@ -1,16 +1,18 @@
 interface class AppEnvironment {
   final String baseUrl;
   final String domainUrl;
-  final String firestoreChatReference;
-  AppEnvironment(this.domainUrl, this.baseUrl, this.firestoreChatReference);
+  AppEnvironment(
+    this.domainUrl,
+    this.baseUrl,
+  );
 }
 
 interface class ProductionEnvironment extends AppEnvironment {
-  ProductionEnvironment() : super("https://api.unonepal.com/", "https://api.unonepal.com/api/", "uno-chats");
+  ProductionEnvironment() : super("http://192.168.1.67:8081/", "http://192.168.1.67:8081/api/");
 }
 
 interface class DevelopmentEnvironment extends AppEnvironment {
-  DevelopmentEnvironment() : super("http://57.181.16.86:8011/", "http://57.181.16.86:8011/api/", "uno-chats");
+  DevelopmentEnvironment() : super("http://192.168.1.67:8081/", "http://192.168.1.67:8081/api/");
 }
 
 // ignore: non_constant_identifier_names

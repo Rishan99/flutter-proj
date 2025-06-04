@@ -4,8 +4,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:moviehub/core/routes/routes.dart';
 import 'package:moviehub/feature/genre/model/genre_model.dart';
-import 'package:moviehub/widgets/custom_ink_well.dart';
-import 'package:moviehub/widgets/image_widget.dart';
+import 'package:moviehub/shared/widgets/custom_ink_well.dart';
+import 'package:moviehub/shared/widgets/image_widget.dart';
 
 class GenreWidget extends StatelessWidget {
   final GenreModel data;

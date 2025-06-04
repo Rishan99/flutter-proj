@@ -7,15 +7,22 @@ import 'package:moviehub/services/movie/movie_service.dart';
 import 'package:moviehub/services/user/user_service.dart';
 import 'package:moviehub/feature/genre/bloc/genre_list/genre_list_bloc.dart';
 import 'package:moviehub/feature/genre/bloc/genre_movie_list/genre_movie_list_bloc.dart';
-import 'package:moviehub/feature/movie_detail/bloc/movie_detail_bloc.dart';
+import 'package:moviehub/feature/movie_detail/bloc/movie_detail/movie_detail_bloc.dart';
+import 'package:moviehub/feature/movie_detail/bloc/rate_movie_bloc.dart';
 import 'package:moviehub/feature/search/bloc/search_bloc.dart';
 import 'package:moviehub/feature/wishlist/bloc/wishlist_bloc.dart';
 import 'package:moviehub/feature/auth/bloc/signup/signup_bloc.dart';
 import 'package:moviehub/feature/auth/bloc/login/login_bloc.dart';
+import 'package:moviehub/feature/splash/bloc/splash_bloc.dart';
 
 final locator = GetIt.instance;
 
 setupDependencies() async {
+  await _initService();
+  _initBloc();
+}
+
+_initService() async {
   ///[Core]
   locator.registerSingletonAsync<PreferenceService>(
     () => PreferenceService.getInstance(),
@@ -32,39 +39,40 @@ setupDependencies() async {
   locator.registerSingleton<UserService>(UserService(httpService));
   locator.registerSingleton<GeneralService>(GeneralService(httpService));
   locator.registerSingleton<MovieService>(MovieService(httpService));
+}
 
-  // Register GenreListBloc with injected GeneralService
+_initBloc() {
   locator.registerFactory<GenreListBloc>(
     () => GenreListBloc(locator<GeneralService>()),
   );
 
-  // Register GenreMovieListBloc with injected MovieService and param1 for genreId
   locator.registerFactoryParam<GenreMovieListBloc, int, void>(
     (genreId, _) => GenreMovieListBloc(locator<MovieService>(), genreId),
   );
 
-  // Register MovieDetailBloc with injected MovieService and param1 for movieId
   locator.registerFactoryParam<MovieDetailBloc, int, void>(
     (movieId, _) => MovieDetailBloc(locator<MovieService>(), movieId),
   );
 
-  // Register SearchBloc with injected MovieService
+  locator.registerFactoryParam<RateMovieBloc, int, void>(
+    (movieId, _) => RateMovieBloc(locator<MovieService>(), movieId),
+  );
+
   locator.registerFactory<SearchBloc>(
     () => SearchBloc(locator<MovieService>()),
   );
 
-  // Register WishlistBloc with injected UserService
   locator.registerFactory<WishlistBloc>(
     () => WishlistBloc(locator<UserService>()),
   );
-
-  // Register SignupBloc with injected AuthService
   locator.registerFactory<SignupBloc>(
     () => SignupBloc(locator<AuthService>()),
   );
 
-  // Register LoginBloc with injected AuthService
   locator.registerFactory<LoginBloc>(
-    () => LoginBloc(locator<AuthService>()),
+    () => LoginBloc(locator<AuthService>(), locator<PreferenceService>()),
+  );
+  locator.registerFactory<SplashBloc>(
+    () => SplashBloc(locator<PreferenceService>()),
   );
 }

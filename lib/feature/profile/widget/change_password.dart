@@ -4,10 +4,10 @@ import 'package:moviehub/core/helper/uiHelpers.dart';
 import 'package:moviehub/core/utility/validator.dart';
 import 'package:moviehub/dependency_inject.dart';
 import 'package:moviehub/services/user/user_service.dart';
-import 'package:moviehub/widgets/custom_ink_well.dart';
-import 'package:moviehub/widgets/form_seperator_box.dart';
-import 'package:moviehub/widgets/form_title_widget.dart';
-import 'package:moviehub/widgets/visibility_widget.dart';
+import 'package:moviehub/shared/widgets/custom_ink_well.dart';
+import 'package:moviehub/shared/widgets/form_seperator_box.dart';
+import 'package:moviehub/shared/widgets/form_title_widget.dart';
+import 'package:moviehub/shared/widgets/visibility_widget.dart';
 
 class ChangePasswordView extends StatefulWidget {
   const ChangePasswordView({super.key});

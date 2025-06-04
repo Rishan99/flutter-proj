@@ -16,13 +16,3 @@ class MovieDetailError extends MovieDetailState implements ErrorState {
   final String message;
   MovieDetailError(this.message);
 }
-
-class RatingAddedLoading extends MovieDetailState {}
-
-class RatingAddedSuccess extends MovieDetailState {}
-
-class RatingAddedError extends MovieDetailState {
-  final String message;
-
-  RatingAddedError(this.message);
-}

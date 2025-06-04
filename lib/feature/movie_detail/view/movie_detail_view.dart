@@ -7,7 +7,7 @@ import 'package:moviehub/core/helper/uiHelpers.dart';
 import 'package:moviehub/core/theme/app_colors.dart';
 import 'package:moviehub/core/utility/utilities.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:moviehub/feature/movie_detail/bloc/movie_detail_bloc.dart';
+import 'package:moviehub/feature/movie_detail/bloc/movie_detail/movie_detail_bloc.dart';
 import 'package:moviehub/shared/model/movie_model.dart';
 import 'package:moviehub/core/bloc/view/bloc_builder_view.dart';
 
@@ -16,9 +16,9 @@ import 'package:moviehub/feature/movie_detail/widget/about_movie_widget.dart';
 import 'package:moviehub/feature/movie_detail/widget/label_widget.dart';
 import 'package:moviehub/feature/movie_detail/widget/rate_movie_widget.dart';
 import 'package:moviehub/feature/movie_detail/widget/reviews_list_widget.dart';
-import 'package:moviehub/widgets/form_seperator_box.dart';
-import 'package:moviehub/widgets/image_widget.dart';
-import 'package:moviehub/widgets/wishlist_icon.dart';
+import 'package:moviehub/shared/widgets/form_seperator_box.dart';
+import 'package:moviehub/shared/widgets/image_widget.dart';
+import 'package:moviehub/shared/widgets/wishlist_icon.dart';
 
 class MovieDetailView extends StatefulWidget {
   final int id;

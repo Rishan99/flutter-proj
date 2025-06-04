@@ -6,10 +6,10 @@ import 'package:moviehub/core/utility/validator.dart';
 import 'package:moviehub/dependency_inject.dart';
 import 'package:moviehub/feature/auth/bloc/signup/signup_bloc.dart';
 import 'package:moviehub/feature/auth/model/signup_model.dart';
-import 'package:moviehub/widgets/custom_ink_well.dart';
-import 'package:moviehub/widgets/form_seperator_box.dart';
-import 'package:moviehub/widgets/form_title_widget.dart';
-import 'package:moviehub/widgets/visibility_widget.dart';
+import 'package:moviehub/shared/widgets/custom_ink_well.dart';
+import 'package:moviehub/shared/widgets/form_seperator_box.dart';
+import 'package:moviehub/shared/widgets/form_title_widget.dart';
+import 'package:moviehub/shared/widgets/visibility_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
@@ -115,21 +115,24 @@ class _SignupViewState extends State<SignupView> {
                       ),
                     ),
                     FormSeperatorBox(),
-                    TextButton(
-                      onPressed: () {
-                        if (!formKey.currentState!.validate()) return;
-                        BlocProvider.of<SignupBloc>(context).add(
-                          SignupRequested(
-                            SignupModel(
-                              email: emailController.text,
-                              name: nameController.text,
-                              password: passwordController.text,
+                    Builder(builder: (context) {
+                      return TextButton(
+                        onPressed: () {
+                          if (!formKey.currentState!.validate()) return;
+                          hideKeyboard(context);
+                          BlocProvider.of<SignupBloc>(context).add(
+                            SignupRequested(
+                              SignupModel(
+                                email: emailController.text,
+                                name: nameController.text,
+                                password: passwordController.text,
+                              ),
                             ),
-                          ),
-                        );
-                      },
-                      child: Text('Signup'),
-                    ),
+                          );
+                        },
+                        child: Text('Signup'),
+                      );
+                    }),
                     FormSeperatorBox(),
                   ],
                 ),

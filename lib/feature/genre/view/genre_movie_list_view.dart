@@ -6,8 +6,8 @@ import 'package:moviehub/core/constant/app_defaults.dart';
 import 'package:moviehub/dependency_inject.dart';
 import 'package:moviehub/feature/genre/bloc/genre_movie_list/genre_movie_list_bloc.dart';
 import 'package:moviehub/feature/search/widget/search_movie_widget.dart';
-import 'package:moviehub/widgets/center_hint_text.dart';
-import 'package:moviehub/widgets/form_seperator_box.dart';
+import 'package:moviehub/shared/widgets/center_hint_text.dart';
+import 'package:moviehub/shared/widgets/form_seperator_box.dart';
 
 class GenreMovieListView extends StatelessWidget {
   final int? genreId;

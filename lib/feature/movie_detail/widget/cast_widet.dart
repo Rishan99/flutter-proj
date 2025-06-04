@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:moviehub/core/helper/uiHelpers.dart';
 
 import 'package:moviehub/shared/model/cast_model.dart';
-import 'package:moviehub/widgets/circular_image_widget.dart';
+import 'package:moviehub/shared/widgets/circular_image_widget.dart';
 
 class CastWidget extends StatelessWidget {
   final CastModel cast;

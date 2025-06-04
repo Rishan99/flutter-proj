@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../widgets/shrimmer.dart';
+import '../../../../shared/widgets/shrimmer.dart';
 
 class GridMovieShimmer extends StatelessWidget {
   const GridMovieShimmer({super.key});

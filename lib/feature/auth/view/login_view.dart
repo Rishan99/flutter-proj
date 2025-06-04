@@ -8,10 +8,10 @@ import 'package:moviehub/dependency_inject.dart';
 import 'package:moviehub/feature/auth/bloc/login/login_bloc.dart';
 import 'package:moviehub/feature/auth/model/login_model.dart';
 import 'package:moviehub/services/core/preference_service.dart';
-import 'package:moviehub/widgets/custom_ink_well.dart';
-import 'package:moviehub/widgets/form_seperator_box.dart';
-import 'package:moviehub/widgets/form_title_widget.dart';
-import 'package:moviehub/widgets/visibility_widget.dart';
+import 'package:moviehub/shared/widgets/custom_ink_well.dart';
+import 'package:moviehub/shared/widgets/form_seperator_box.dart';
+import 'package:moviehub/shared/widgets/form_title_widget.dart';
+import 'package:moviehub/shared/widgets/visibility_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
@@ -40,7 +40,6 @@ class _LoginViewState extends State<LoginView> {
           } else {
             Navigator.pop(context);
             if (state is LoginSuccess) {
-              locator<PreferenceService>().accessToken = state.accessToken;
               displayToastSuccess("Logged in successfully");
               Navigator.pushNamedAndRemoveUntil(context, Routes.homePage, (route) => false);
             } else if (state is LoginError) {
@@ -102,6 +101,7 @@ class _LoginViewState extends State<LoginView> {
                           ),
                         ),
                         onTap: () {
+                          hideKeyboard(context);
                           Navigator.pushNamed(
                             context,
                             Routes.signupPage,
@@ -110,20 +110,23 @@ class _LoginViewState extends State<LoginView> {
                       ),
                     ),
                     FormSeperatorBox(),
-                    TextButton(
-                      onPressed: () {
-                        if (!formKey.currentState!.validate()) return;
-                        BlocProvider.of<LoginBloc>(context).add(
-                          LoginRequested(
-                            LoginModel(
-                              email: emailController.text,
-                              password: passwordController.text,
+                    Builder(builder: (context) {
+                      return TextButton(
+                        onPressed: () {
+                          if (!formKey.currentState!.validate()) return;
+                          hideKeyboard(context);
+                          BlocProvider.of<LoginBloc>(context).add(
+                            LoginRequested(
+                              LoginModel(
+                                email: emailController.text,
+                                password: passwordController.text,
+                              ),
                             ),
-                          ),
-                        );
-                      },
-                      child: Text('Login'),
-                    ),
+                          );
+                        },
+                        child: Text('Login'),
+                      );
+                    }),
                     FormSeperatorBox(),
                   ],
                 ),

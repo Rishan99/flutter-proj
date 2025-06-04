@@ -1,4 +1,4 @@
-import 'package:moviehub/widgets/image_widget.dart';
+import 'package:moviehub/shared/widgets/image_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

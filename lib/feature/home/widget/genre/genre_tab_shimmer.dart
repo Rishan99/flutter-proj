@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:moviehub/widgets/shrimmer.dart';
+import 'package:moviehub/shared/widgets/shrimmer.dart';
 
 class GenreTabShimmer extends StatelessWidget {
   const GenreTabShimmer({super.key});

@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:moviehub/core/theme/app_colors.dart';
-import 'package:moviehub/widgets/form_seperator_box.dart';
+import 'package:moviehub/shared/widgets/form_seperator_box.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ViewSlider extends StatefulWidget {

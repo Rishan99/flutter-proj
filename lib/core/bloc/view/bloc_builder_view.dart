@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moviehub/core/bloc/event/bloc_event.dart';
-import 'package:moviehub/widgets/center_hint_text.dart';
-import 'package:moviehub/widgets/loading_widget.dart';
+import 'package:moviehub/shared/widgets/center_hint_text.dart';
+import 'package:moviehub/shared/widgets/loading_widget.dart';
 
 class BlocBuilderView<B extends StateStreamable<S>, S, LS extends LoadedState> extends StatelessWidget {
   final Widget? loadingWidget;

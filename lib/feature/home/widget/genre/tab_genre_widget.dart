@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:moviehub/core/routes/routes.dart';
 import 'package:moviehub/core/theme/app_colors.dart';
 import 'package:moviehub/feature/genre/model/genre_model.dart';
-import 'package:moviehub/widgets/custom_ink_well.dart';
+import 'package:moviehub/shared/widgets/custom_ink_well.dart';
 
 class TabGenreWidget extends StatelessWidget {
   final bool isSelected;

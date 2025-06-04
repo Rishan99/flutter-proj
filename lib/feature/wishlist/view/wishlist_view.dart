@@ -5,8 +5,8 @@ import 'package:moviehub/dependency_inject.dart';
 import 'package:moviehub/feature/wishlist/bloc/wishlist_bloc.dart';
 import 'package:moviehub/core/bloc/view/bloc_builder_view.dart';
 import 'package:moviehub/feature/wishlist/widget/wishlist_widget.dart';
-import 'package:moviehub/widgets/center_hint_text.dart';
-import 'package:moviehub/widgets/form_seperator_box.dart';
+import 'package:moviehub/shared/widgets/center_hint_text.dart';
+import 'package:moviehub/shared/widgets/form_seperator_box.dart';
 
 class WishlistView extends StatefulWidget {
   const WishlistView({super.key});

@@ -7,8 +7,8 @@ import 'package:moviehub/feature/home/widget/grid_widget/grid_movie_shimmer_row.
 import 'package:moviehub/feature/home/widget/grid_widget/grid_movie_widget.dart';
 import 'package:moviehub/services/movie/movie_service.dart';
 import 'package:moviehub/shared/model/movie_model.dart';
-import 'package:moviehub/widgets/form_seperator_box.dart';
-import 'package:moviehub/widgets/load_page_widget.dart';
+import 'package:moviehub/shared/widgets/form_seperator_box.dart';
+import 'package:moviehub/shared/widgets/load_page_widget.dart';
 
 class PouplarView extends StatelessWidget {
   const PouplarView({super.key});
