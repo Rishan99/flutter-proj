@@ -14,6 +14,7 @@ import 'package:moviehub/feature/wishlist/bloc/wishlist_bloc.dart';
 import 'package:moviehub/feature/auth/bloc/signup/signup_bloc.dart';
 import 'package:moviehub/feature/auth/bloc/login/login_bloc.dart';
 import 'package:moviehub/feature/splash/bloc/splash_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final locator = GetIt.instance;
 
@@ -24,17 +25,18 @@ setupDependencies() async {
 
 _initService() async {
   ///[Core]
-  locator.registerSingletonAsync<PreferenceService>(
-    () => PreferenceService.getInstance(),
+  var prefs = await SharedPreferences.getInstance();
+  locator.registerSingleton<PreferenceService>(
+    PreferenceService(prefs),
   );
 
-  final preferenceService = await locator.getAsync<PreferenceService>();
+  final preferenceService = locator.get<PreferenceService>();
   locator.registerSingleton<HttpService>(
     HttpService(preferenceService),
   );
   final httpService = locator<HttpService>();
 
-  // // ///[Services]
+  ///[Services]
   locator.registerSingleton<AuthService>(AuthService(httpService));
   locator.registerSingleton<UserService>(UserService(httpService));
   locator.registerSingleton<GeneralService>(GeneralService(httpService));

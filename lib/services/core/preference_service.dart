@@ -1,21 +1,16 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PreferenceService {
-  static SharedPreferences? _sharedPreferences;
+  final SharedPreferences _sharedPreferences;
 
   static const String keyAccessToken = 'accessToken';
   static const String keyUsername = 'userName';
 
-  static Future<PreferenceService> getInstance() async {
-    _sharedPreferences = await SharedPreferences.getInstance();
-    return PreferenceService._();
-  }
-
-  PreferenceService._();
+  PreferenceService(this._sharedPreferences);
 
   ///Access Token [keyAccessToken]
   set accessToken(String value) {
-    _sharedPreferences!.setString(keyAccessToken, value);
+    _sharedPreferences.setString(keyAccessToken, value);
   }
 
   String get accessToken {
@@ -25,18 +20,18 @@ class PreferenceService {
 
   ///Access Token [keyUsername]
   set username(String value) {
-    _sharedPreferences!.setString(keyUsername, value);
+    _sharedPreferences.setString(keyUsername, value);
   }
 
   String get username {
-    return _sharedPreferences!.getString(keyUsername) ?? '';
+    return _sharedPreferences.getString(keyUsername) ?? '';
   }
 
   Future<void> clearSession() async {
-    await _sharedPreferences!.remove(keyAccessToken);
+    await _sharedPreferences.remove(keyAccessToken);
   }
 
   Future<void> clearAll() async {
-    await _sharedPreferences!.clear();
+    await _sharedPreferences.clear();
   }
 }
